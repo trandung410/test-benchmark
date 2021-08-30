@@ -23,10 +23,6 @@
   yum:
     name: python-lxml.x86_64
     state: latest
-#- name: install python36
-#  yum:
-#    name: python36.x86_64
-#    state: latest
 - name: install p7zip
   yum:
     name: p7zip
@@ -39,11 +35,6 @@
   yum:
     name: liberation-sans-fonts.noarch
     state: latest
-#- name: ln -s /usr/bin/python36 /usr/bin/python3
-#  file:
-#    src: /usr/bin/python36
-#    dest: /usr/bin/python3
-#    state: link
 - name: install php-cli
   yum:
     name: php-cli
@@ -67,6 +58,38 @@
 - name: install vim
   yum:
     name: vim
+    state: latest
+- name: install gcc
+  yum:
+    name: gcc
+    state: latest
+- name: install gcc-c++
+  yum:
+    name: gcc-c++
+    state: latest
+- name: install autoconf
+  yum:
+    name: autoconf
+    state: latest
+- name: install automake
+  yum:
+    name: automake
+    state: latest
+- name: install patch
+  yum:
+    name: patch
+    state: latest
+- name: install expat-devel
+  yum:
+    name: expat-devel
+    state: latest
+- name: install libtool
+  yum:
+    name: libtool
+    state: latest
+- name: install libaio-devel
+  yum:
+    name: libaio-devel
     state: latest
 - name: reboot host
   shell: sleep 10 && sync && sync && /usr/sbin/reboot
