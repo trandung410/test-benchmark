@@ -1,5 +1,5 @@
 ---
-- hosts: OpenStack
+- hosts: 8c-16g
   gather_facts: yes
   become: yes
   
