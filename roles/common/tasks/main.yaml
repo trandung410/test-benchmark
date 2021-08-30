@@ -68,6 +68,6 @@
   local_action: wait_for
   args:
     port: 22
-    delay: 30
-    timeout: 600
+    delay: 20
+    timeout: 120
     state: started
