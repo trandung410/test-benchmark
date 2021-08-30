@@ -1,0 +1,10 @@
+---
+- hosts: phoronix
+  gather_facts: yes
+  become: yes
+  
+  roles:
+    - common
+    - phoronix-install
+    - phoronix-bench
+    #- phoronix-merge

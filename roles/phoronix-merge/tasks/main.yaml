@@ -1,0 +1,38 @@
+---
+- name: Find /var/lib/phoronix-test-suite/test-results/ all directories
+  find:
+    paths: /var/lib/phoronix-test-suite/test-results
+    recurse: no
+    file_type: directory
+    #patterns:'20*'
+  register: dir_list
+#- debug: var=dir_list
+
+- name: /var/lib/phoronix-test-suite/test-results/*/composite.xml in PhoronixTestSuite/System/Identifier
+  xml:
+    path: '{{ item.path }}/composite.xml'
+    xpath: /PhoronixTestSuite/System/Identifier
+    value: '{{ ansible_hostname }} {{ item.path|basename }}'
+  loop: '{{ dir_list.files }}'
+- name: /var/lib/phoronix-test-suite/test-results/*/composite.xml in PhoronixTestSuite/Result/Data/Entry/Identifier
+  xml:
+    path: '{{ item.path }}/composite.xml'
+    xpath: /PhoronixTestSuite/Result/Data/Entry/Identifier
+    value: '{{ ansible_hostname }} {{ item.path|basename }}'
+  loop: '{{ dir_list.files }}'
+
+- name: phoronix-test-suite merge-results {{ dir_list.files | map(attribute="path") | map('basename') | join(' ') }}
+  command: phoronix-test-suite merge-results {{ dir_list.files | map(attribute="path") | map('basename') | join(' ') }}
+
+- name: Find /var/lib/phoronix-test-suite/test-results/ all directories
+  find:
+    paths: /var/lib/phoronix-test-suite/test-results
+    recurse: no
+    file_type: directory
+    patterns: 'merge*'
+    #use_regex: yes
+  register: dir_list
+
+- name: phoronix-test-suite result-file-to-pdf merge-*
+  command: phoronix-test-suite result-file-to-pdf {{ item.path|basename }}
+  loop: '{{ dir_list.files }}'

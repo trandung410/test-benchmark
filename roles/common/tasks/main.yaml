@@ -1,0 +1,73 @@
+---
+- name: install epel-release
+  yum:
+    name: epel-release
+    state: latest
+- name: update
+  yum:
+    name: '*'
+    state: latest
+- name: install bzip2
+  yum:
+    name: bzip2
+    state: latest
+- name: install phoronix-test-suite.noarch
+  yum:
+    name: phoronix-test-suite.noarch
+    state: latest
+- name: install unzip
+  yum:
+    name: unzip
+    state: latest
+- name: install python-lxml.x86_64 for managing xml
+  yum:
+    name: python-lxml.x86_64
+    state: latest
+- name: install python36
+  yum:
+    name: python36.x86_64
+    state: latest
+- name: install p7zip
+  yum:
+    name: p7zip
+    state: latest
+- name: install p7zip-plugins
+  yum:
+    name: p7zip-plugins
+    state: latest
+- name: install liberation-sans-fonts.noarch for result-file-to-pdf
+  yum:
+    name: liberation-sans-fonts.noarch
+    state: latest
+- name: ln -s /usr/bin/python36 /usr/bin/python3
+  file:
+    src: /usr/bin/python36
+    dest: /usr/bin/python3
+    state: link
+- name: install php-cli
+  yum:
+    name: php-cli
+    state: latest
+- name: install php-xml
+  yum:
+    name: php-xml
+    state: latest
+- name: install php-json
+  yum:
+    name: php-json
+    state: latest
+- name: install golang
+  yum:
+    name: golang
+    state: latest
+- name: reboot host
+  shell: sleep 10 && sync && sync && /usr/sbin/reboot
+  async: 300
+  poll: 0
+- name: waiting for server booting up
+  local_action: wait_for
+  args:
+    port: 22
+    delay: 30
+    timeout: 600
+    state: started

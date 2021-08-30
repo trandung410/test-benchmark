@@ -1,0 +1,3 @@
+---
+- name: run phoronix batch-benchmark tests pts/apache pts/nginx pts/mysqlslap pts/sysbench pts/compress-7zip
+  command: phoronix-test-suite batch-benchmark pts/apache pts/nginx pts/mysqlslap pts/sysbench pts/compress-7zip
