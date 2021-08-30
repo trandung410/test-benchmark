@@ -23,6 +23,11 @@
      path: /etc/phoronix-test-suite.xml
      xpath: /PhoronixTestSuite/Options/BatchMode/PromptForTestIdentifier
      value: 'FALSE'
+- name: Set the /PhoronixTestSuite/Options/BatchMode/PromptForTestDescription=FALSE
+  xml:
+     path: /etc/phoronix-test-suite.xml
+     xpath: /PhoronixTestSuite/Options/BatchMode/PromptForTestDescription
+     value: 'FALSE'
 - name: Set the /PhoronixTestSuite/Options/BatchMode/PromptSaveName=FALSE
   xml:
      path: /etc/phoronix-test-suite.xml
