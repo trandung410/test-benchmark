@@ -73,5 +73,4 @@
 #    state: started
 - name: Wait for server reboot
   wait_for:
-    port: 22
-    delay: 60
+    timeout: 60
