@@ -1,5 +1,5 @@
 ---
-- hosts: phoronix
+- hosts: OpenStack
   gather_facts: yes
   become: yes
   
