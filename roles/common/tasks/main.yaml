@@ -71,6 +71,10 @@
 #    delay: 20
 #    timeout: 120
 #    state: started
-- name: Wait for server to reboot
-  reboot:
-    reboot_timeout: 3600
+- name: Wait for server to restart
+  local_action:
+    module: wait_for
+      host={{ inventory_hostname }}
+      port=22
+      delay=10
+    become: false
