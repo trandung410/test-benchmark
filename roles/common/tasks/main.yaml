@@ -64,13 +64,3 @@
   shell: sleep 10 && sync && sync && /usr/sbin/reboot
   async: 300
   poll: 0
-#- name: waiting for server booting up
-#  local_action: wait_for
-#  args:
-#    port: 22
-#    delay: 20
-#    timeout: 120
-#    state: started
-- name: Wait for server reboot
-  wait_for:
-    timeout: 60
