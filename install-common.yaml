@@ -1,5 +1,5 @@
 ---
-- hosts: 8c-16g
+- hosts: all
   gather_facts: yes
   become: yes
   
