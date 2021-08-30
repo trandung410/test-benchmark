@@ -3,38 +3,38 @@
   command: phoronix-test-suite batch-install pts/apache pts/nginx pts/mysqlslap pts/sysbench pts/compress-7zip
   args:
     creates: /etc/phoronix-test-suite.xml
- - name: Set the /PhoronixTestSuite/Options/BatchMode/SaveResults=TRUE
-   xml:
+- name: Set the /PhoronixTestSuite/Options/BatchMode/SaveResults=TRUE
+  xml:
      path: /etc/phoronix-test-suite.xml
      xpath: /PhoronixTestSuite/Options/BatchMode/SaveResults
      value: 'TRUE'
- - name: Set the /PhoronixTestSuite/Options/BatchMode/OpenBrowser=FALSE
-   xml:
+- name: Set the /PhoronixTestSuite/Options/BatchMode/OpenBrowser=FALSE
+  xml:
      path: /etc/phoronix-test-suite.xml
      xpath: /PhoronixTestSuite/Options/BatchMode/OpenBrowser
      value: 'FALSE'
- - name: Set the /PhoronixTestSuite/Options/BatchMode/UploadResults=FALSE
-   xml:
+- name: Set the /PhoronixTestSuite/Options/BatchMode/UploadResults=FALSE
+  xml:
      path: /etc/phoronix-test-suite.xml
      xpath: /PhoronixTestSuite/Options/BatchMode/UploadResults
      value: 'FALSE'
- - name: Set the /PhoronixTestSuite/Options/BatchMode/PromptForTestIdentifier=FALSE
-   xml:
+- name: Set the /PhoronixTestSuite/Options/BatchMode/PromptForTestIdentifier=FALSE
+  xml:
      path: /etc/phoronix-test-suite.xml
      xpath: /PhoronixTestSuite/Options/BatchMode/PromptForTestIdentifier
      value: 'FALSE'
- - name: Set the /PhoronixTestSuite/Options/BatchMode/PromptSaveName=FALSE
-   xml:
+- name: Set the /PhoronixTestSuite/Options/BatchMode/PromptSaveName=FALSE
+  xml:
      path: /etc/phoronix-test-suite.xml
      xpath: /PhoronixTestSuite/Options/BatchMode/PromptSaveName
      value: 'FALSE'
- - name: Set the /PhoronixTestSuite/Options/BatchMode/RunAllTestCombinations=TRUE
-   xml:
+- name: Set the /PhoronixTestSuite/Options/BatchMode/RunAllTestCombinations=TRUE
+  xml:
      path: /etc/phoronix-test-suite.xml
      xpath: /PhoronixTestSuite/Options/BatchMode/RunAllTestCombinations
      value: 'TRUE'
- - name: Set the /PhoronixTestSuite/Options/BatchMode/Configured=TRUE
-   xml:
+- name: Set the /PhoronixTestSuite/Options/BatchMode/Configured=TRUE
+  xml:
      path: /etc/phoronix-test-suite.xml
      xpath: /PhoronixTestSuite/Options/BatchMode/Configured
      value: 'TRUE'
