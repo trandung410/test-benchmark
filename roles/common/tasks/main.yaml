@@ -60,6 +60,14 @@
   yum:
     name: golang
     state: latest
+- name: install htop
+  yum:
+    name: htop
+    state: latest
+- name: install vim
+  yum:
+    name: vim
+    state: latest
 - name: reboot host
   shell: sleep 10 && sync && sync && /usr/sbin/reboot
   async: 300
