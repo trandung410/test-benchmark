@@ -6,5 +6,5 @@
   roles:
     - common
     - phoronix-install
-    - phoronix-bench
+    #- phoronix-bench
     #- phoronix-merge
