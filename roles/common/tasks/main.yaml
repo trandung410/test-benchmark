@@ -59,37 +59,25 @@
   yum:
     name: vim
     state: latest
-- name: install gcc
+- name: install gcc, gcc-c++, autoconf, automake, patch, expat-devel, libtool, libaio-devel, pcre-devel, zlib-devel, cmake, libevent-devel, ncurses-devel, bison, flex, openssl-devel  
   yum:
-    name: gcc
-    state: latest
-- name: install gcc-c++
-  yum:
-    name: gcc-c++
-    state: latest
-- name: install autoconf
-  yum:
-    name: autoconf
-    state: latest
-- name: install automake
-  yum:
-    name: automake
-    state: latest
-- name: install patch
-  yum:
-    name: patch
-    state: latest
-- name: install expat-devel
-  yum:
-    name: expat-devel
-    state: latest
-- name: install libtool
-  yum:
-    name: libtool
-    state: latest
-- name: install libaio-devel
-  yum:
-    name: libaio-devel
+    name: 
+    - gcc
+    - gcc-c++
+    - autoconf
+    - automake
+    - patch
+    - expat-devel
+    - libtool
+    - libaio-devel
+    - pcre-devel
+    - zlib-devel
+    - cmake
+    - libevent-devel
+    - ncurses-devel
+    - bison
+    - flex
+    - openssl-devel
     state: latest
 - name: reboot host
   shell: sleep 10 && sync && sync && /usr/sbin/reboot
