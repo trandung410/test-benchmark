@@ -4,6 +4,5 @@
     name: geekbench4
     tasks_from: benchmark
   tags:
-    - never
     - geekbench4
 
