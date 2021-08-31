@@ -1,11 +1,11 @@
 ---
-#- name: Test with apache 
-#  command: phoronix-test-suite batch-benchmark pts/apache
-##- name: Test with nginx 
-#  command: phoronix-test-suite batch-benchmark pts/nginx
+- name: Test with apache 
+  command: phoronix-test-suite batch-benchmark pts/apache
+- name: Test with nginx 
+  command: phoronix-test-suite batch-benchmark pts/nginx
 - name: Test with sysbench 
   command: phoronix-test-suite batch-benchmark pts/sysbench
 - name: Test with compress-7zip 
   command: phoronix-test-suite batch-benchmark pts/compress-7zip 
-#- name: Test with mysqlslap 
-#  command: phoronix-test-suite batch-benchmark pts/mysqlslap
+- name: Test with mysqlslap 
+  command: phoronix-test-suite batch-benchmark pts/mysqlslap
