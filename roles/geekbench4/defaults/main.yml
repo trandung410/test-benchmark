@@ -1,0 +1,21 @@
+---
+# defaults file for geekbench4
+
+# DEVS: Update this version as appropriate.
+# MAYBE/2018-12-26: Add version watcher for Geekbench.
+#   https://www.geekbench.com/download/linux/
+geekbench4_app_version: '4.3.2'
+geekbench4_app_prgname: 'Geekbench-{{ geekbench4_app_version }}-Linux'
+geekbench4_app_archive: "{{ geekbench4_app_prgname }}.tar.gz"
+# 2018-12-13: The latest download is at, e.g.,
+#   http://cdn.geekbench.com/Geekbench-4.3.1-Linux.tar.gz
+geekbench4_app_downurl: "http://cdn.geekbench.com/{{ geekbench4_app_archive }}"
+
+# DEVS: You'll find files on the host under:
+#   ~/.local/share/geekbench4/
+geekbench4_working_dir: "{{ ansible_env.HOME }}/.local/share/geekbench4"
+
+geekbench4_working_tar: "{{ geekbench4_working_dir }}/{{ geekbench4_app_archive }}"
+geekbench4_program_dir: "{{ geekbench4_working_dir }}/{{ geekbench4_app_prgname }}"
+geekbench4_results_lns: "{{ geekbench4_working_dir }}/{{ ansible_hostname }}-geekbench4-results.txt"
+

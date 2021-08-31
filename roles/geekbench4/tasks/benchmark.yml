@@ -1,0 +1,57 @@
+---
+
+# Benchmark task: Download geekbench4, run it,
+# and open the results in a new browser window.
+
+- name: Ensure the working directory exists
+  file: path={{ geekbench4_working_dir }} state=directory
+
+- name: Ensure the results file exists
+  file: path={{ geekbench4_results_lns }} state=touch
+
+# MAYBE/2018-12-26: Remove old versions' downloads and unpacked archives.
+
+- name: Stat geekbench4 archive before downloading
+  stat: path={{ geekbench4_working_tar }}
+  register: geekbench4_archive
+
+- name: Fetch the geekbench4 archive, if necessary
+  get_url:
+    url: '{{ geekbench4_app_downurl }}'
+    dest: "{{ geekbench4_working_dir }}/"
+  # Avoid connecting to the CDN server if the file exists locally.
+  # (There's a get_url default, `force: no`, that will not download the
+  # archive if it has not changed, but it still checks with the server.)
+  when: geekbench4_archive.stat.exists == False
+
+- name: Unarchive the geekbench4 archive
+  unarchive:
+    src: "{{ geekbench4_working_tar }}"
+    dest: "{{ geekbench4_working_dir }}/"
+    # We could instead download to the master,
+    # and unpack to the host, but we downloaded
+    # to the host, so tell Ansible to look there.
+    remote_src: yes
+
+- name: Benchmark the host! Run geekbench4
+  shell: ./geekbench4
+  args:
+    chdir: "{{ geekbench4_program_dir }}"
+  register: geekbench4_output
+
+- set_fact:
+    geekbench4_results_url: "{{ geekbench4_output.stdout_lines[-1] | trim }}"
+
+- name: Copy geekbench4 output to geekbench stdout file
+  shell: echo "{{ geekbench4_results_url }}" >> "{{ geekbench4_results_lns }}"
+
+- name: Tell user where to find geekbench4 results
+  debug:
+    msg: >
+          You'll find the geekbench4 results here!
+
+            {{ geekbench4_results_url }}
+
+- name: Open geekbench4 results in browser window locally
+  local_action: command sensible-browser {{ geekbench4_results_url }}
+

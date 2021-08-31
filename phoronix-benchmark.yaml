@@ -4,5 +4,6 @@
   become: yes
   
   roles:
-    - phoronix-bench
+ #   - phoronix-bench
+    - geekbench4
  #   - phoronix-merge
