@@ -1,8 +1,8 @@
 ---
 - name: Run Benchmark only when specifically requested via --tags
   include_role:
-    name: geekbench4
+    name: geekbench5
     tasks_from: benchmark
   tags:
-    - geekbench4
+    - geekbench5
 
