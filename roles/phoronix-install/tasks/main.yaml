@@ -13,11 +13,11 @@
      path: /etc/phoronix-test-suite.xml
      xpath: /PhoronixTestSuite/Options/BatchMode/OpenBrowser
      value: 'FALSE'
-- name: Set the /PhoronixTestSuite/Options/BatchMode/UploadResults=FALSE
+- name: Set the /PhoronixTestSuite/Options/BatchMode/UploadResults=TRUE
   xml:
      path: /etc/phoronix-test-suite.xml
      xpath: /PhoronixTestSuite/Options/BatchMode/UploadResults
-     value: 'FALSE'
+     value: 'TRUE'
 - name: Set the /PhoronixTestSuite/Options/BatchMode/PromptForTestIdentifier=FALSE
   xml:
      path: /etc/phoronix-test-suite.xml
@@ -31,7 +31,7 @@
 - name: Set the /PhoronixTestSuite/Options/BatchMode/PromptSaveName=FALSE
   xml:
      path: /etc/phoronix-test-suite.xml
-     xpath: /PhoronixTestSuite/Options/BatchMode/PromptSaveName
+     xpath: /PhoronixTestSuite/Options/BatchMode/PromptSaveNames
      value: 'FALSE'
 - name: Set the /PhoronixTestSuite/Options/BatchMode/RunAllTestCombinations=TRUE
   xml:
