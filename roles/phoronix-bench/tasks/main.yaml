@@ -8,7 +8,7 @@
     phoronix_results_url: "{{ phoronix_output.stdout_lines[-1] | trim }}"
 
 - name: Copy phoronix output to phoronix stdout file
-  shell: echo "{{ phoronix_results_url }}" >> "/var/lib/phoronix-test-suite/test-results/"
+  shell: echo "{{ phoronix_results_url }}" >> "/var/lib/phoronix-test-suite/test-results/{{ ansible_hostname }}-phoronix-results.txt"
 
 - name: Tell user where to find phoronix results
   debug:
