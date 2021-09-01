@@ -1,11 +1,18 @@
 ---
-- name: Test with apache 
-  command: phoronix-test-suite batch-benchmark pts/apache
-- name: Test with nginx 
-  command: phoronix-test-suite batch-benchmark pts/nginx
-- name: Test with sysbench 
+- name: Benchmark with Apache Nginx Mysqlslap Sysbench Compress-zip 
   command: phoronix-test-suite batch-benchmark pts/sysbench
-- name: Test with compress-7zip 
-  command: phoronix-test-suite batch-benchmark pts/compress-7zip 
-- name: Test with mysqlslap 
-  command: phoronix-test-suite batch-benchmark pts/mysqlslap
+  #pts/apache pts/nginx pts/sysbench pts/compress-7zip pts/mysqlslap
+  register: phoronix_output
+
+- set_fact:
+    phoronix_results_url: "{{ phoronix_output.stdout_lines[-1] | trim }}"
+
+- name: Copy phoronix output to phoronix stdout file
+  shell: echo "{{ phoronix_results_url }}" >> "/var/lib/phoronix-test-suite/test-results/"
+
+- name: Tell user where to find phoronix results
+  debug:
+    msg: >
+          You'll find the phoronix results here!
+
+            {{ phoronix_results_url }}
