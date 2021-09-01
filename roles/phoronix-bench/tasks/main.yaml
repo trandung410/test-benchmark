@@ -1,7 +1,6 @@
 ---
 - name: Benchmark with Apache Nginx Mysqlslap Sysbench Compress-zip 
-  command: phoronix-test-suite batch-benchmark pts/sysbench
-  #pts/apache pts/nginx pts/sysbench pts/compress-7zip pts/mysqlslap
+  command: phoronix-test-suite batch-benchmark pts/apache pts/nginx pts/sysbench pts/compress-7zip pts/mysqlslap pts/sysbench
   register: phoronix_output
 
 - set_fact:

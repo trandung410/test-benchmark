@@ -5,5 +5,5 @@
   
   roles:
    - phoronix-bench
-#   - geekbench5
+   - geekbench5
 #   - phoronix-merge
