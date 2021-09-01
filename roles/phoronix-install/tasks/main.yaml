@@ -1,5 +1,5 @@
 ---
-- name: run phoronix batch-install tests pts/apache pts/nginx pts/mysqlslap pts/sysbench pts/compress-7zip pts/apache pts/nginx pts/mysqlslap
+- name: run phoronix batch-install tests pts/apache pts/nginx pts/mysqlslap pts/sysbench pts/compress-7zip
   command: phoronix-test-suite batch-install pts/sysbench pts/compress-7zip pts/apache pts/nginx pts/mysqlslap
   args:
     creates: /etc/phoronix-test-suite.xml
