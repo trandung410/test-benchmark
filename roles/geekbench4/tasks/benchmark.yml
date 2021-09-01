@@ -52,6 +52,3 @@
 
             {{ geekbench4_results_url }}
 
-- name: Open geekbench4 results in browser window locally
-  local_action: command sensible-browser {{ geekbench4_results_url }}
-
