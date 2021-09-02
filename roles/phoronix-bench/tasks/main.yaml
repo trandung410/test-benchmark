@@ -15,9 +15,9 @@
 - name: 'Print CPU USAGE'
   debug:
     msg:
-      - -------------------------------------------------------
-      - CPU % Usage = ( 100 - idle time ) = {{ cpuusage.stdout }}% is idle
-      - -------------------------------------------------------
+      - --------------------------------
+      - CPU % Usage = {{ cpuusage.stdout }}
+      - ---------------------------------
 - name: 'Get CPU LOAD'
   shell: |
     cat /proc/loadavg |awk '{print $1}'
@@ -35,9 +35,9 @@
 - name: 'Print RAM USAGE'
   debug:
     msg:
-      - ------------------------
+      - ----------------------------------
       - RAM Usage = {{ ramusage.stdout }}
-      - ------------------------
+      - ----------------------------------
 
 - name: Benchmark with COMPRESSION 
   command: phoronix-test-suite batch-benchmark pts/compress-7zip
@@ -49,9 +49,9 @@
 - name: 'Print CPU USAGE'
   debug:
     msg:
-      - -------------------------------------------------------
-      - CPU % Usage = ( 100 - idle time ) = {{ cpuusage.stdout }}% is idle
-      - -------------------------------------------------------
+      - --------------------------------
+      - CPU % Usage = {{ cpuusage.stdout }}
+      - --------------------------------
 - name: 'Get CPU LOAD'
   shell: |
     cat /proc/loadavg |awk '{print $1}'
@@ -69,16 +69,16 @@
 - name: 'Print RAM USAGE'
   debug:
     msg:
-      - ------------------------
+      - ----------------------------------
       - RAM Usage = {{ ramusage.stdout }}
-      - ------------------------
+      - ----------------------------------
 
 #- name: Benchmark with DATABASE 
 #  command: phoronix-test-suite batch-benchmark pts/mysqlslap
 #  register: phoronix_output
 
-- set_fact:
-    phoronix_results_url: "{{ phoronix_output.stdout_lines[-1] | trim }}"
+#- set_fact:
+#    phoronix_results_url: "{{ phoronix_output.stdout_lines[-1] | trim }}"
 
 - name: Copy phoronix output to phoronix stdout file
   shell: echo "{{ phoronix_results_url }}" >> "/var/lib/phoronix-test-suite/test-results/{{ ansible_hostname }}-phoronix-results.txt"
