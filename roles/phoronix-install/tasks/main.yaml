@@ -31,7 +31,7 @@
 - name: Set the /PhoronixTestSuite/Options/BatchMode/PromptSaveName=FALSE
   xml:
      path: /etc/phoronix-test-suite.xml
-     xpath: /PhoronixTestSuite/Options/BatchMode/PromptSaveNames
+     xpath: /PhoronixTestSuite/Options/BatchMode/PromptSaveName
      value: 'FALSE'
 - name: Set the /PhoronixTestSuite/Options/BatchMode/RunAllTestCombinations=TRUE
   xml:
