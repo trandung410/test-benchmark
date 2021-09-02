@@ -1,13 +1,70 @@
 ---
-#- name: Benchmark with APACHE 
-#  command: phoronix-test-suite batch-benchmark pts/apache  
-
-#- name: Benchmark with NGINX 
-#  command: phoronix-test-suite batch-benchmark pts/nginx
-
+- name: Benchmark with APACHE 
+  command: phoronix-test-suite batch-benchmark pts/apache  
+- name: 'Get CPU USAGE'
+  shell: |
+    top -b -n2 -p 1 | fgrep "Cpu(s)" | tail -1 | awk -F'id,' -v prefix="$prefix" '{ split($1, vs, ","); v=vs[length(vs)]; sub("%", "", v); printf "%s%.1f%%\n", prefix, 100 - v }'
+  register: cpuusage
+- name: 'Print CPU USAGE'
+  debug:
+    msg:
+      - --------------------------------
+      - CPU % Usage = {{ cpuusage.stdout }}
+      - --------------------------------
+- name: 'Get CPU LOAD'
+  shell: |
+    cat /proc/loadavg |awk '{print $1}'
+  register: cpuload
+- name: 'Print CPU LOAD'
+  debug:
+    msg:
+      - ------------------------
+      - CPU Load = {{ cpuload.stdout }}
+      - ------------------------
+- name: 'Get RAM USAGE'
+  shell: |
+    free -m | awk 'NR==2{printf "Memory Usage: %s/%sMB (%.2f%%)\n", $3,$2,$3*100/$2 }'
+  register: ramusage
+- name: 'Print RAM USAGE'
+  debug:
+    msg:
+      - ----------------------------------
+      - RAM Usage = {{ ramusage.stdout }}
+      - ----------------------------------
+- name: Benchmark with NGINX 
+  command: phoronix-test-suite batch-benchmark pts/nginx
+- name: 'Get CPU USAGE'
+  shell: |
+    top -b -n2 -p 1 | fgrep "Cpu(s)" | tail -1 | awk -F'id,' -v prefix="$prefix" '{ split($1, vs, ","); v=vs[length(vs)]; sub("%", "", v); printf "%s%.1f%%\n", prefix, 100 - v }'
+  register: cpuusage
+- name: 'Print CPU USAGE'
+  debug:
+    msg:
+      - --------------------------------
+      - CPU % Usage = {{ cpuusage.stdout }}
+      - --------------------------------
+- name: 'Get CPU LOAD'
+  shell: |
+    cat /proc/loadavg |awk '{print $1}'
+  register: cpuload
+- name: 'Print CPU LOAD'
+  debug:
+    msg:
+      - ------------------------
+      - CPU Load = {{ cpuload.stdout }}
+      - ------------------------
+- name: 'Get RAM USAGE'
+  shell: |
+    free -m | awk 'NR==2{printf "Memory Usage: %s/%sMB (%.2f%%)\n", $3,$2,$3*100/$2 }'
+  register: ramusage
+- name: 'Print RAM USAGE'
+  debug:
+    msg:
+      - ----------------------------------
+      - RAM Usage = {{ ramusage.stdout }}
+      - ----------------------------------  
 - name: Benchmark with SYSBENCH 
   command: phoronix-test-suite batch-benchmark pts/sysbench
-
 - name: 'Get CPU USAGE'
   shell: |
     top -b -n2 -p 1 | fgrep "Cpu(s)" | tail -1 | awk -F'id,' -v prefix="$prefix" '{ split($1, vs, ","); v=vs[length(vs)]; sub("%", "", v); printf "%s%.1f%%\n", prefix, 100 - v }'
@@ -28,7 +85,7 @@
       - ------------------------
       - CPU Load = {{ cpuload.stdout }}
       - ------------------------
-- name: 'Print CPU LOAD'
+- name: 'Get RAM USAGE'
   shell: |
     free -m | awk 'NR==2{printf "Memory Usage: %s/%sMB (%.2f%%)\n", $3,$2,$3*100/$2 }'
   register: ramusage
@@ -38,10 +95,8 @@
       - ----------------------------------
       - RAM Usage = {{ ramusage.stdout }}
       - ----------------------------------
-
 - name: Benchmark with COMPRESSION 
   command: phoronix-test-suite batch-benchmark pts/compress-7zip
-
 - name: 'Get CPU USAGE'
   shell: |
     top -b -n2 -p 1 | fgrep "Cpu(s)" | tail -1 | awk -F'id,' -v prefix="$prefix" '{ split($1, vs, ","); v=vs[length(vs)]; sub("%", "", v); printf "%s%.1f%%\n", prefix, 100 - v }'
@@ -62,7 +117,7 @@
       - ------------------------
       - CPU Load = {{ cpuload.stdout }}
       - ------------------------
-- name: 'Print CPU LOAD'
+- name: 'Get RAM USAGE'
   shell: |
     free -m | awk 'NR==2{printf "Memory Usage: %s/%sMB (%.2f%%)\n", $3,$2,$3*100/$2 }'
   register: ramusage
@@ -72,14 +127,41 @@
       - ----------------------------------
       - RAM Usage = {{ ramusage.stdout }}
       - ----------------------------------
-
-#- name: Benchmark with DATABASE 
-#  command: phoronix-test-suite batch-benchmark pts/mysqlslap
-#  register: phoronix_output
-
-#- set_fact:
-#    phoronix_results_url: "{{ phoronix_output.stdout_lines[-1] | trim }}"
-
+- name: Benchmark with DATABASE 
+  command: phoronix-test-suite batch-benchmark pts/mysqlslap
+  register: phoronix_output
+- name: 'Get CPU USAGE'
+  shell: |
+    top -b -n2 -p 1 | fgrep "Cpu(s)" | tail -1 | awk -F'id,' -v prefix="$prefix" '{ split($1, vs, ","); v=vs[length(vs)]; sub("%", "", v); printf "%s%.1f%%\n", prefix, 100 - v }'
+  register: cpuusage
+- name: 'Print CPU USAGE'
+  debug:
+    msg:
+      - --------------------------------
+      - CPU % Usage = {{ cpuusage.stdout }}
+      - --------------------------------
+- name: 'Get CPU LOAD'
+  shell: |
+    cat /proc/loadavg |awk '{print $1}'
+  register: cpuload
+- name: 'Print CPU LOAD'
+  debug:
+    msg:
+      - ------------------------
+      - CPU Load = {{ cpuload.stdout }}
+      - ------------------------
+- name: 'Get RAM USAGE'
+  shell: |
+    free -m | awk 'NR==2{printf "Memory Usage: %s/%sMB (%.2f%%)\n", $3,$2,$3*100/$2 }'
+  register: ramusage
+- name: 'Print RAM USAGE'
+  debug:
+    msg:
+      - ----------------------------------
+      - RAM Usage = {{ ramusage.stdout }}
+      - ----------------------------------
+- set_fact:
+    phoronix_results_url: "{{ phoronix_output.stdout_lines[-1] | trim }}"
 - name: Copy phoronix output to phoronix stdout file
   shell: echo "{{ phoronix_results_url }}" >> "/var/lib/phoronix-test-suite/test-results/{{ ansible_hostname }}-phoronix-results.txt"
 
