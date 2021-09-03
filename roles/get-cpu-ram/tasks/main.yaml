@@ -23,7 +23,7 @@
 
 - name: Get file Resource RAM, CPU
   shell: |
-    docker start mariadb wordpress
+    docker stop mariadb wordpress
 
 #- name: Fetch file Get Resource RAM, CPU from other hosts
 # fetch: 
