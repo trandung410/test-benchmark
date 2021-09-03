@@ -7,14 +7,14 @@
 
 - name: Create cronjob get resource RAM, CPU
   cron:
-   name="Get resource RAM, CPU"
-   user="root"
+   name: "Get resource RAM, CPU"
+   user: "root"
    minute: "*"
    hour: "*"
    day: "*"
    month: "*"
    weekday: "*"   
-   job="/root/monitoring-resource.sh"
+   job: "/root/monitoring-resource.sh"
 
 #- name: Fetch file Get Resource RAM, CPU from other hosts
 #  run_once: yes
