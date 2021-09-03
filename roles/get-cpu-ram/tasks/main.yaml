@@ -9,7 +9,7 @@
   cron:
    name: "Get resource RAM, CPU"
    user: "root"
-   minute: "*"
+   minute: "*/1"
    hour: "*"
    day: "*"
    month: "*"
