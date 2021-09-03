@@ -21,9 +21,14 @@
 #    ls -lrt /root/ |grep VMware-Tier* | awk '{print $9}'
 #  register: files_to_fetch
 
-- name: Get file Resource RAM, CPU
-  shell: |
-    docker stop mariadb wordpress
+#- name: Get file Resource RAM, CPU
+#  shell: |
+#    docker stop mariadb wordpress
+
+- name: reboot host
+  shell: sleep 10 && sync && sync && /usr/sbin/reboot
+  async: 300
+  poll: 0
 
 #- name: Fetch file Get Resource RAM, CPU from other hosts
 # fetch: 
