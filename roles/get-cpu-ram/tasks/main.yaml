@@ -20,5 +20,5 @@
   run_once: yes
   fetch: 
     src: /root/VMware-Tier1-4c-8g-100ssd-0.5GHz
-    dest: /root/VMWARE 
+    dest: /VMWARE 
     flat: yes
