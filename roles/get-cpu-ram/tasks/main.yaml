@@ -5,16 +5,16 @@
     dest: /root/
     mode: 0755
 
-#- name: Create cronjob get resource RAM, CPU
-#  cron:
-#   name="Get resource RAM, CPU"
-#   user="root"
-#   minute: 0,15,45
-#   hour: "*"
-#   day: "*"
-#   month: "*"
-#   weekday: "*"   
-#   job="/root/monitoring-resource.sh"
+- name: Create cronjob get resource RAM, CPU
+  cron:
+   name="Get resource RAM, CPU"
+   user="root"
+   minute: "*"
+   hour: "*"
+   day: "*"
+   month: "*"
+   weekday: "*"   
+   job="/root/monitoring-resource.sh"
 
 #- name: Fetch file Get Resource RAM, CPU from other hosts
 #  run_once: yes
