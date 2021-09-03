@@ -9,16 +9,16 @@
   cron:
    name: "Get resource RAM, CPU"
    user: "root"
-   minute: "*/15"
+   minute: "*/1"
    hour: "*"
    day: "*"
    month: "*"
    weekday: "*"   
    job: "/root/monitoring-resource.sh"
 
-#- name: Fetch file Get Resource RAM, CPU from other hosts
-#  run_once: yes
-#  fetch: 
-#    src=/root/VMware-* 
-#    dest=/root/VMWARE 
-#    flat=yes
+- name: Fetch file Get Resource RAM, CPU from other hosts
+  run_once: yes
+  fetch: 
+    src: /root/VMware-* 
+    dest: /root/VMWARE 
+    flat: yes
