@@ -1,3 +1,3 @@
 ---
 - name: Clear Test Case
-  shell: rm -rf /var/lib/phoronix-test-suite/test-results/*
+  shell: rm -rf /var/lib/phoronix-test-suite/test-results/2021*
