@@ -1,8 +1,8 @@
 ---
 - name: Copy file Get Resource RAM, CPU to other hosts
   copy: 
-    src=monitoring-resource.sh 
-    dest=/root/
+    src: monitoring-resource.sh 
+    dest: /root/
     mode: 0755
 
 #- name: Create cronjob get resource RAM, CPU
