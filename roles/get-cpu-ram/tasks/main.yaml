@@ -24,6 +24,6 @@
 - name: Fetch file Get Resource RAM, CPU from other hosts
   run_once: yes
   fetch: 
-    src: /root/{{ files_to_fetch }}
-    dest: /VMWARE/{{ files_to_fetch }}
+    src: /root/{{ files_to_fetch.stdout }}
+    dest: /VMWARE/{{ files_to_fetch.stdout }}
     flat: yes
