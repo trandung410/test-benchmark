@@ -19,6 +19,6 @@
 - name: Fetch file Get Resource RAM, CPU from other hosts
   run_once: yes
   fetch: 
-    src: /root/VMware-* 
+    src: /root/VMware-{{ ansible_hostname }}
     dest: /root/VMWARE 
     flat: yes
