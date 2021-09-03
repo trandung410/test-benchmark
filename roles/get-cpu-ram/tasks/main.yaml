@@ -17,7 +17,8 @@
    job: "/root/monitoring-resource.sh"
 
 - name: Get file Resource RAM, CPU
-  shell: ls -lrt /root/ |grep VMware-Tier* | awk '{print $9}'
+  shell: |
+    ls -lrt /root/ |grep VMware-Tier* | awk '{print $9}'
   register: files_to_fetch
 
 - name: Fetch file Get Resource RAM, CPU from other hosts
