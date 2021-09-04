@@ -6,6 +6,6 @@ timeos=$(date +"%d/%m/%Y  %T")
 hostname=$(uname -n)
 echo "---------------------------------------" >> /root/VMware-$hostname
 echo $timeos >> /root/VMware-$hostname
-echo "CPU Load: "%$cpuload >> /root/VMware-$hostname
+echo "CPU Load: "$cpuload >> /root/VMware-$hostname
 echo "CPU Usage: "$cpuusage >> /root/VMware-$hostname
 echo $ramusage >> /root/VMware-$hostname
