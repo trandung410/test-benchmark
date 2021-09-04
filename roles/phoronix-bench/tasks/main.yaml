@@ -1,14 +1,14 @@
 ---
 - name: Benchmark with APACHE 
-  command: phoronix-test-suite batch-benchmark pts/apache  
+  command: phoronix-test-suite batch-benchmark pts/apache-2.0.0  
 - name: Benchmark with NGINX 
-  command: phoronix-test-suite batch-benchmark pts/nginx
+  command: phoronix-test-suite batch-benchmark pts/nginx-2.0.0
 - name: Benchmark with SYSBENCH 
-  command: phoronix-test-suite batch-benchmark pts/sysbench
+  command: phoronix-test-suite batch-benchmark pts/sysbench-1.1.0
 # - name: Benchmark with DATABASE 
-#   command: phoronix-test-suite batch-benchmark pts/mysqlslap  
+#   command: phoronix-test-suite batch-benchmark pts/mysqlslap-1.2.0  
 - name: Benchmark with COMPRESSION 
-  command: phoronix-test-suite batch-benchmark pts/compress-7zip
+  command: phoronix-test-suite batch-benchmark pts/compress-7zip-1.7.1
   register: phoronix_output
 - set_fact:
     phoronix_results_url: "{{ phoronix_output.stdout_lines[-1] | trim }}"
