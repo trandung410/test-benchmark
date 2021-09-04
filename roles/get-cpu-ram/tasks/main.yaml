@@ -26,7 +26,7 @@
     docker stop mariadb wordpress
 
 - name: Fetch file Get Resource RAM, CPU from other hosts
- fetch: 
+  fetch: 
     src: /root/{{ files_to_fetch.stdout }}
     dest: /VMWARE/{{ files_to_fetch.stdout }}
     flat: yes
