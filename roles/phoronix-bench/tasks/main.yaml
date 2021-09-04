@@ -1,6 +1,6 @@
 ---
-# - name: Benchmark with APACHE 
-#   command: phoronix-test-suite batch-benchmark pts/apache-2.0.0  
+- name: Benchmark with APACHE 
+  command: phoronix-test-suite batch-benchmark pts/apache-2.0.0  
 - name: Benchmark with NGINX 
   command: phoronix-test-suite batch-benchmark pts/nginx-2.0.0
 - name: Benchmark with SYSBENCH 

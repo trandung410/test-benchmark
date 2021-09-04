@@ -1,36 +1,32 @@
 ---
-# - name: Copy file Get Resource RAM, CPU to other hosts
-#   copy: 
-#     src: monitoring-resource.sh 
-#     dest: /root/
-#     mode: 0755
+- name: Copy file Get Resource RAM, CPU to other hosts
+  copy: 
+    src: monitoring-resource.sh 
+    dest: /root/
+    mode: 0755
 
-# - name: Create cronjob get resource RAM, CPU
-#   cron:
-#    name: "Get resource RAM, CPU"
-#    user: "root"
-#    minute: "*/5"
-#    hour: "*"
-#    day: "*"
-#    month: "*"
-#    weekday: "*"   
-#    job: "/root/monitoring-resource.sh"
+- name: Create cronjob get resource RAM, CPU
+  cron:
+   name: "Get resource RAM, CPU"
+   user: "root"
+   minute: "*/5"
+   hour: "*"
+   day: "*"
+   month: "*"
+   weekday: "*"   
+   job: "/root/monitoring-resource.sh"
 
-# - name: Get file Resource RAM, CPU
-#   shell: |
-#     ls -lrt /root/ |grep VMware-Tier* | awk '{print $9}'
-#   register: files_to_fetch
+- name: Get file Resource RAM, CPU
+  shell: |
+    ls -lrt /root/ |grep VMware-Tier* | awk '{print $9}'
+  register: files_to_fetch
 
-# - name: Get file Resource RAM, CPU
-#   shell: |
-#     docker stop mariadb wordpress
+- name: Get file Resource RAM, CPU
+  shell: |
+    docker stop mariadb wordpress
 
-# - name: Fetch file Get Resource RAM, CPU from other hosts
-#   fetch: 
-#     src: /root/{{ files_to_fetch.stdout }}
-#     dest: /VMWARE/{{ files_to_fetch.stdout }}
-#     flat: yes
-- name: reboot host
-  shell: sleep 10 && sync && sync && /usr/sbin/reboot
-  async: 300
-  poll: 0
+- name: Fetch file Get Resource RAM, CPU from other hosts
+  fetch: 
+    src: /root/{{ files_to_fetch.stdout }}
+    dest: /VMWARE/{{ files_to_fetch.stdout }}
+    flat: yes
