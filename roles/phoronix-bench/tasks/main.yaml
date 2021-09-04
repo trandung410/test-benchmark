@@ -5,10 +5,10 @@
   command: phoronix-test-suite batch-benchmark pts/nginx
 - name: Benchmark with SYSBENCH 
   command: phoronix-test-suite batch-benchmark pts/sysbench
+# - name: Benchmark with DATABASE 
+#   command: phoronix-test-suite batch-benchmark pts/mysqlslap  
 - name: Benchmark with COMPRESSION 
   command: phoronix-test-suite batch-benchmark pts/compress-7zip
-- name: Benchmark with DATABASE 
-  command: phoronix-test-suite batch-benchmark pts/mysqlslap
   register: phoronix_output
 - set_fact:
     phoronix_results_url: "{{ phoronix_output.stdout_lines[-1] | trim }}"
