@@ -1,6 +1,6 @@
 ---
 - name: Clear Test Case
-  shell: rm -rf /var/lib/phoronix-test-suite/test-results/2021*
+  shell: rm -rf /var/lib/phoronix-test-suite/installed-tests/pts/mysqlslap-1.2.0
 # - name: Remove Apache
 #   shell: rm -rf /var/lib/phoronix-test-suite/installed-tests/pts/apache-2.0.0
 - name: reboot host
