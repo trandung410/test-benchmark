@@ -1,8 +1,9 @@
 ---
+- name: Install Database
+  command: phoronix-test-suite batch-install trandung410/viettel-idc-database-benchmark
 - name: Benchmark database 
   command: phoronix-test-suite batch-benchmark trandung410/viettel-idc-database-benchmark
   register: phoronix_output
-
 # - name: Benchmark CPU 
 #   command: phoronix-test-suite batch-benchmark trandung410/viettel-idc-cpu-benchmark
 #   register: phoronix_output
