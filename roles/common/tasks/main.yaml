@@ -11,10 +11,6 @@
   yum:
     name: bzip2
     state: latest
-- name: install phoronix-test-suite.noarch
-  yum:
-    name: phoronix-test-suite.noarch
-    state: latest
 - name: install unzip
   yum:
     name: unzip

@@ -1,4 +1,8 @@
 ---
+- name: install phoronix-test-suite.noarch
+  yum:
+    name: phoronix-test-suite.noarch
+    state: latest
 - name: run phoronix batch-install apache nginx mysqlslap sysbench compress-7zip
   command: phoronix-test-suite batch-install trandung410/viettel-idc-cpu-benchmark
   args:
