@@ -1,6 +1,10 @@
 ---
-- name: Benchmark CPU 
-  command: phoronix-test-suite batch-benchmark trandung410/idc-cpu-benchmark
+- name: Setup EnV 
+  command: phoronix-test-suite batch-install trandung410/idc-mariadb-benchmark
+- name: Install database 
+  command: phoronix-test-suite batch-install trandung410/idc-mariadb-benchmark
+- name: Benchmark database 
+  command: phoronix-test-suite batch-benchmark trandung410/idc-mariadb-benchmark
   register: phoronix_output
 - set_fact:
     phoronix_results_url: "{{ phoronix_output.stdout_lines[-1] | trim }}"
