@@ -1,7 +1,7 @@
 ---
-- name: Remove Apache
-  shell: docker start mariadb wordpress
-# - name: reboot host
-#   shell: sleep 10 && sync && sync && /usr/sbin/reboot
-#   async: 300
-#   poll: 0
+# - name: Remove Apache
+#   shell: docker start mariadb wordpress
+- name: reboot host
+  shell: sleep 10 && sync && sync && /usr/sbin/reboot
+  async: 300
+  poll: 0
