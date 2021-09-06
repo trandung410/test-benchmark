@@ -3,6 +3,8 @@
   yum:
     name: phoronix-test-suite.noarch
     state: latest
+- name: delete file phoronix-test-suite.xml
+  shell: rm -f /etc/phoronix-test-suite.xml
 - name: run phoronix batch-install apache nginx mysqlslap sysbench compress-7zip
   command: phoronix-test-suite batch-install trandung410/viettel-idc-cpu-benchmark
   args:
