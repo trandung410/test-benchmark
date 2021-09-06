@@ -1,6 +1,6 @@
 ---
 - name: Benchmark CPU 
-  command: phoronix-test-suite batch-benchmark trandung410/viettel-idc-cpu-benchmark
+  command: phoronix-test-suite batch-benchmark trandung410/idc-cpu-benchmark
   register: phoronix_output
 - set_fact:
     phoronix_results_url: "{{ phoronix_output.stdout_lines[-1] | trim }}"
