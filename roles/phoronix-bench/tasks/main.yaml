@@ -1,10 +1,8 @@
 ---
-- name: Setup EnV 
-  command: phoronix-test-suite batch-install trandung410/idc-mariadb-benchmark
 - name: Install database 
-  command: phoronix-test-suite batch-install trandung410/idc-mariadb-benchmark
+  command: phoronix-test-suite batch-install dungta/idc-mariadb-test
 - name: Benchmark database 
-  command: phoronix-test-suite batch-benchmark trandung410/idc-mariadb-benchmark
+  command: phoronix-test-suite batch-benchmark dungta/idc-mariadb-test
   register: phoronix_output
 - set_fact:
     phoronix_results_url: "{{ phoronix_output.stdout_lines[-1] | trim }}"
