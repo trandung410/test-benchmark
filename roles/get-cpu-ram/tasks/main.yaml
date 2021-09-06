@@ -9,7 +9,7 @@
   cron:
    name: "Get resource RAM, CPU"
    user: "root"
-   minute: "*/5"
+   minute: "*"
    hour: "*"
    day: "*"
    month: "*"
@@ -26,7 +26,3 @@
     src: /root/{{ files_to_fetch.stdout }}
     dest: /VMWARE/{{ files_to_fetch.stdout }}
     flat: yes
-
-# - name: Get file Resource RAM, CPU
-#   shell: |
-#     docker stop mariadb wordpress
