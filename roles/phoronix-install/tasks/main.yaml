@@ -1,6 +1,6 @@
 ---
-- name: run phoronix batch-install tests pts/apache pts/nginx pts/mysqlslap pts/sysbench pts/compress-7zip
-  command: phoronix-test-suite batch-install pts/sysbench-1.1.0 pts/compress-7zip-1.7.1 pts/apache-2.0.0 pts/nginx-2.0.0 pts/mysqlslap-1.2.0
+- name: run phoronix batch-install apache nginx mysqlslap sysbench compress-7zip
+  command: phoronix-test-suite batch-install trandung410/viettel-idc-cpu-benchmark
   args:
     creates: /etc/phoronix-test-suite.xml
 - name: Set the /PhoronixTestSuite/Options/BatchMode/SaveResults=TRUE
