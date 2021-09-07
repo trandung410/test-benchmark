@@ -6,7 +6,7 @@
 - name: delete file phoronix-test-suite.xml
   shell: rm -f /etc/phoronix-test-suite.xml
 - name: run phoronix batch-install apache nginx mysqlslap sysbench compress-7zip
-  command: phoronix-test-suite batch-install trandung410/idc-cpu-benchmark
+  command: phoronix-test-suite batch-install dungta/idc-cpu-test
   args:
     creates: /etc/phoronix-test-suite.xml
 - name: Set the /PhoronixTestSuite/Options/BatchMode/SaveResults=TRUE
