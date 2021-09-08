@@ -1,6 +1,8 @@
 ---
-- name: Benchmark CPU 
-  command: phoronix-test-suite batch-benchmark dungta/idc-cpu-test
+- name: Install Database 
+  command: phoronix-test-suite batch-install dungta/idc-mariadb-test
+- name: Benchmark Database 
+  command: phoronix-test-suite batch-benchmark dungta/idc-mariadb-test
   register: phoronix_output
 - set_fact:
     phoronix_results_url: "{{ phoronix_output.stdout_lines[-1] | trim }}"
