@@ -4,4 +4,4 @@
   become: yes
   
   roles:
-   - clear-results
+   - command-to-do
