@@ -1,7 +1,5 @@
 ---
-- name: Install Database 
-  command: phoronix-test-suite batch-install dungta/idc-cpu-test
-- name: Benchmark Database 
+- name: Benchmark CPU 
   command: phoronix-test-suite batch-benchmark dungta/idc-cpu-test
   register: phoronix_output
 - set_fact:
