@@ -1,20 +1,20 @@
 ---
-# - name: Copy file Get Resource RAM, CPU to other hosts
-#   copy: 
-#     src: monitoring-resource.sh 
-#     dest: /root/
-#     mode: 0755
+- name: Copy file Get Resource RAM, CPU to other hosts
+  copy: 
+    src: monitoring-resource.sh 
+    dest: /root/
+    mode: 0755
 
-# - name: Create cronjob get resource RAM, CPU
-#   cron:
-#    name: "Get resource RAM, CPU"
-#    user: "root"
-#    minute: "*"
-#    hour: "*"
-#    day: "*"
-#    month: "*"
-#    weekday: "*"   
-#    job: "/root/monitoring-resource.sh"
+- name: Create cronjob get resource RAM, CPU
+  cron:
+   name: "Get resource RAM, CPU"
+   user: "root"
+   minute: "*"
+   hour: "*"
+   day: "*"
+   month: "*"
+   weekday: "*"   
+   job: "/root/monitoring-resource.sh"
 
 - name: Get file Resource RAM, CPU
   shell: |
