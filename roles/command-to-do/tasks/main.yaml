@@ -1,11 +1,11 @@
 ---
+- name: Install MariaDB
+  shell: docker run -e MYSQL_ROOT_PASSWORD=123123 -e MYSQL_DATABASE=wordpress --name mariadb -d -p 3306:3306 mariadb:latest
+- name: Install wordpress
+  shell: docker run -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=123123 --name wordpress --link mariadb:mysql -p 80:80 -d wordpress
 # - name: Remove
-#   shell: docker rm -f mariadb wordpress
-# - name: Install MariaDB
-#   shell: docker run -e MYSQL_ROOT_PASSWORD=123123 -e MYSQL_DATABASE=wordpress --name mariadb -d -p 3306:3306 mariadb:latest
-# - name: Install wordpress
-#   shell: docker run -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=123123 --name wordpress --link mariadb:mysql -p 80:80 -d wordpress
-- name: reboot host
-  shell: sleep 10 && sync && sync && /usr/sbin/reboot
-  async: 300
-  poll: 0
+#   shell: docker start mariadb wordpress
+# - name: reboot host
+#   shell: sleep 10 && sync && sync && /usr/sbin/reboot
+#   async: 300
+#   poll: 0
